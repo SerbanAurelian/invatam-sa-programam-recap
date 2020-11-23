@@ -1,3 +1,9 @@
+ <form>
+
+ <input type="text" name="number" value="1">
+  <input type="submit" name="save" value="Go">
+</form> 
+
 <?php
 
-echo '23.nov.2020';
+var_dump($_POST);
