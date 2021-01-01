@@ -3,11 +3,15 @@
 session_start ();
 
 if (
-	isset($_POST['login']) &&
-	$_POST['username'] === 'admin' &&
-	$_POST['password'] === 'parola'
+	isset($_POST['login'])
 ) {
-	$_SESSION['logged'] = true;
+	$query = "SELECT id FROM users WHERE username = '".$_POST['username']."' AND password = '".$_POST['password']."'";
+	$databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
+	$result = mysqli_query($databaseConnection, $query);
+	$user = mysqli_fetch_assoc($result);
+	if ($user !== null) {
+		$_SESSION['logged'] = true;
+	}
 }
 
 $logged = false;
@@ -28,3 +32,9 @@ include 'menu.php';
 </form>
 
 <?php endif; ?>
+
+<h1>Invatam Sa Programam</h1>
+
+<h3>PHP & MySQL</h3>
+
+<p>HTML</p>
