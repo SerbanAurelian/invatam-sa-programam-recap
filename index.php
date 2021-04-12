@@ -6,7 +6,7 @@ $error = '';
 if (
 	isset($_POST['login'])
 ) {
-	$query = "SELECT id FROM users WHERE username = '".$_POST['username']."' AND password = '".$_POST['password']."'";
+	$query = "SELECT id FROM users WHERE username = '".$_POST['username']."' AND password = '".md5($_POST['password'])."'";
 	$databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
 	$result = mysqli_query($databaseConnection, $query);
 	$user = mysqli_fetch_assoc($result);
