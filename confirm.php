@@ -9,7 +9,7 @@ $databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_progra
 $result = mysqli_query($databaseConnection, $query);
 $user = mysqli_fetch_assoc($result);
 if ($user !== null) {
-	$query = "UPDATE users SER register_code = NULL WHERE id = ".(int)$user['id'];
+	$query = "UPDATE users SET register_code = NULL WHERE id = ".(int)$user['id'];
 	$result = mysqli_query($databaseConnection, $query);
 	$message = 'Success';
 } else {
