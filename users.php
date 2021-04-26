@@ -8,7 +8,7 @@ if (!$logged) {
 	die('You are not logged');
 }
 
-$query = "SELECT id, username FROM users";
+$query = "SELECT id, username, register_code FROM users";
 
 $databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
 $result = mysqli_query($databaseConnection, $query);
@@ -30,6 +30,7 @@ while ($user = mysqli_fetch_assoc($result)) {
 	<tr>
 		<th>User ID</th>
 		<th>Username</th>
+		<th>Active</th>
 	</tr>
 
 	<?php foreach ($users as $user): ?>	
@@ -37,6 +38,7 @@ while ($user = mysqli_fetch_assoc($result)) {
 	<tr>
 		<td><?=$user['id']?></td>
 		<td><?=$user['username']?></td>
+		<td><?=$user['register_code'] === null ? 'Yes' : 'No'?></td>
 	</tr>
 	
 	<?php endforeach; ?>

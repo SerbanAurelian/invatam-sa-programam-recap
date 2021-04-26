@@ -6,17 +6,19 @@ $error = '';
 if (
 	isset($_POST['login'])
 ) {
-	$query = "SELECT id FROM users WHERE username = '".$_POST['username']."' AND password = '".md5($_POST['password'])."'AND register_code IS NULL";
+	$query = "SELECT id, register_code FROM users WHERE username = '".$_POST['username']."'AND password = '".md5($_POST['password'])."'AND register_code IS NULL";
 	$databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
 	$result = mysqli_query($databaseConnection, $query);
 	$user = mysqli_fetch_assoc($result);
 	if ($user !== null) {
 		$_SESSION['logged'] = true;
 		$_SESSION['username'] = $_POST['username'];
+		} else {
+			$error = 'Please confirm registration by clicking on the link you received at your email address!';
+		}
 	} else {
 		$error = 'Invalid credentials!';
 	}
-}
 
 include 'menu.php';
 ?>
@@ -32,6 +34,10 @@ include 'menu.php';
 		<p><?=$error?></p>
 	<?php endif; ?>
 	
+<?php endif; ?>
+
+<?php if (isset($_GET['message'])): ?>
+	<p><?=$_GET['message']?></p>
 <?php endif; ?>
 
 <h1>Invatam Sa Programam</h1>
