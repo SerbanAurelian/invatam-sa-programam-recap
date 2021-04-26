@@ -16,4 +16,5 @@ if ($user !== null) {
 	$error = 'Invalid register code!';
 }
 
-echo $message.'<br>'.$error;
+header ('location: index.php?message='.$message.'&error='.$error);
+exit;

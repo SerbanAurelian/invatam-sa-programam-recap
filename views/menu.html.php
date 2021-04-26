@@ -1,11 +1,3 @@
-<?php
-$logged = false;
-$userName = '';
-if (isset($_SESSION['logged'])) {
-	$logged = true;
-	$userName = $_SESSION['username'];
-}
-?>
 <p>
 	<a href="index.php">Home</a>
 	

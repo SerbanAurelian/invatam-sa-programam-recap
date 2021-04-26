@@ -1,6 +1,6 @@
 <?php
 
-session_start ();
+require 'includes/common.php';
 
 $username = '';
 $email = '';
@@ -45,15 +45,5 @@ if (isset($_POST['register'])) {
 	}
 }
 
-include 'menu.php';
-?>
-<form method="POST"> 
-	<input type="text" name="username" value="<?=$username?>" placeholder="Username">
-	<input type="text" name="email" value="<?=$email?>" placeholder="Email Address">
-	<input type="password" name="password" value="" placeholder="Password">	
-	<input type="submit" name="register" value="Register">
-	<a href="index.php">Login</a>
-</form>
-<?php if ($error !== ''): ?>
-	<p><?=$error?></p>
-<?php endif; ?>
+include 'views/menu.html.php';
+include 'views/register.html.php';
