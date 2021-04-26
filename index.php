@@ -4,7 +4,7 @@ require 'includes/common.php';
 
 $error = '';
 if (isset($_POST['login'])) {
-	$query = "SELECT id, register_code FROM users WHERE username = '".$_POST['username']."'AND password = '".md5($_POST['password'])."'AND register_code IS NULL";
+	$query = "SELECT id, register_code FROM users WHERE username = '".$_POST['username']."' AND password = '".md5($_POST['password'])."'";
 
 	$databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
 	$result = mysqli_query($databaseConnection, $query);
