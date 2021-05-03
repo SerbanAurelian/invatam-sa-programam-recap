@@ -20,11 +20,10 @@ if (isset($_POST['register'])) {
 			} else {	
 				$password = md5($password);
 				$code = md5(time().rand(100000, 999999));
-				$link = 'http://localhost/invatam-sa-programam-recap/confirm.php?register_code='.$code;
+				$link = SITE_URL.'/confirm.php?register_code='.$code;
 				
 				$query = "SELECT id FROM users WHERE username = '".$username."' OR email = '".$email."'";
 	
-				$databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
 				$result = mysqli_query($databaseConnection, $query);
 				$user = mysqli_fetch_assoc($result);
 				if ($user !== null) {
@@ -35,10 +34,9 @@ if (isset($_POST['register'])) {
 						VALUES ('".$username."', '".$email."', '".$password."', '".$code."')";
 					mysqli_query($databaseConnection, $query);
 					
-					mail('php@example.com', 'Invatam sa programam Registration Confirmation', 'Click on: '.$link.' to finalize registration!');
-									
-					header('location: index.php?message=Please check email and click on received link to confirm registration!'); // redirects to index php
-					exit;
+					mail($email, 'Invatam sa programam Registration Confirmation', 'Click on: '.$link.' to finalize registration!');
+					
+					redirect('index.php?message=Please check email and click on received link to confirm registration!');
 				}	
 			}
 		}	

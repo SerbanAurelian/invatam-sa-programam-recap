@@ -1,11 +1,13 @@
 <?php
+
+require 'includes/common.php';
+
 $message = '';
 $error = '';
-$code = $_GET['register_code'];
+$registerCode = $_GET['register_code'];
 
-$query = "SELECT id FROM users WHERE register_code = '".$code."'";
+$query = "SELECT id FROM users WHERE register_code = '".$registerCode."'";
 
-$databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
 $result = mysqli_query($databaseConnection, $query);
 $user = mysqli_fetch_assoc($result);
 if ($user !== null) {
@@ -16,5 +18,4 @@ if ($user !== null) {
 	$error = 'Invalid register code!';
 }
 
-header ('location: index.php?message='.$message.'&error='.$error);
-exit;
+redirect('index.php?message='.$message.'&error='.$error);

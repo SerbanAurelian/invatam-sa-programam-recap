@@ -1,8 +1,9 @@
 <?php
 
-session_start(); // gives me acces to $_SESSION
+require 'includes/common.php';
 
-unset($_SESSION['logged']); // unsets $_SESSION['logged']
+session_start();
 
-header('location: index.php'); // redirects to index php
-exit;
+unset($_SESSION['logged']);
+
+redirect('index.php');

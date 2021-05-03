@@ -8,7 +8,7 @@ if (!$logged) {
 
 $query = "SELECT id, username, register_code FROM users";
 
-$databaseConnection = mysqli_connect('localhost', 'root', '', 'invatam_sa_programam_recap');
+$databaseConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 $result = mysqli_query($databaseConnection, $query);
 
 $users = [];
