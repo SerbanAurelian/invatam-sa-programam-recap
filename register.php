@@ -43,5 +43,4 @@ if (isset($_POST['register'])) {
 	}
 }
 
-include 'views/menu.html.php';
 include 'views/register.html.php';
