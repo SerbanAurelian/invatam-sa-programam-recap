@@ -36,7 +36,7 @@ if (isset($_POST['register'])) {
 					
 					mail($email, 'Invatam sa programam Registration Confirmation', 'Click on: '.$link.' to finalize registration!');
 					
-					redirect('index.php?message=Please check email and click on received link to confirm registration!');
+					redirect('login.php?message=Please check email and click on received link to confirm registration!');
 				}	
 			}
 		}	

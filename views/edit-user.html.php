@@ -1,4 +1,4 @@
-<h1>Add New User</h1>
+<h1>Edit User <?=$username?></h1>
 
 <form method="POST"> 
 	<input type="text" name="username" value="<?=$username?>" placeholder="Username"><br>

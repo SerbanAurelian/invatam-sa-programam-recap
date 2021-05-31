@@ -18,4 +18,4 @@ if ($user !== null) {
 	$error = 'Invalid register code!';
 }
 
-redirect('index.php?message='.$message.'&error='.$error);
+redirect('login.php?message='.$message.'&error='.$error);

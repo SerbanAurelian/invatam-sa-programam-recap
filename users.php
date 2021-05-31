@@ -6,6 +6,8 @@ if (!$logged) {
 	die('You are not logged');
 }
 
+$message = isset($_GET['message']) ? $_GET['message'] : '';
+
 $query = "SELECT id, username, email, register_code FROM users";
 
 $result = mysqli_query($databaseConnection, $query);
