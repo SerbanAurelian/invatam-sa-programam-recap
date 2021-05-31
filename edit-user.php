@@ -29,7 +29,7 @@ if ($user === null) {
 				$updatePassword = '';
 				if ($newPassword !== '') {
 					$newPassword = md5($newPassword);
-					$updatePassword = ", password = ''".$newPassword."";
+					$updatePassword = ", password = '".$newPassword."'";
 				}
 				
 				if (
